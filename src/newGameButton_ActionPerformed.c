@@ -13,22 +13,26 @@
 #include "ablibs.h"
 #include "abimport.h"
 #include "proto.h"
-#include "Snake.h"
 #include "Globals.h"
+#include "Snake.h"
 #include "Drawing.h"
 #include "SnakeFood.h"
 #include "DoublyLinkedList.h"
 
+
 int newGameButton_ActionPerformed( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo_t *cbinfo )
 {
-
+	
 	widget = widget, apinfo = apinfo, cbinfo = cbinfo;
-	
-	srand((unsigned int) time(NULL));
-	freeList();
-	
+	if (!SEEDED)
+	{
+		srand((unsigned int) time(NULL));
+		SEEDED = 1;
+	}
+		
 	PtSetResource(ABW_scoreTextField, Pt_ARG_TEXT_STRING, "0", 0);
 	
+	killSnake(&snake);
 	ClearSquare(STX, STY, WIDTH+STX, LENGTH+STY);
 	
 	RUNNING = 1;

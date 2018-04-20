@@ -27,6 +27,8 @@ rightButton_ActionPerformed( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInf
 		
 	wipeSnake(&snake);
 	
+	/*
+	
 	if(inBounds(&snake, RIGHT) == 1) {
 		moveSnakeHead(&snake, RIGHT);
 		if(isScore(&snake, &snakeFood)) {
@@ -38,7 +40,7 @@ rightButton_ActionPerformed( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInf
 			initSnakeFood(&snakeFood);
 		} // end if
 			
-	} // end if
+	} // end if*/
 	
 	drawSnake(&snake);
 	return( Pt_CONTINUE );

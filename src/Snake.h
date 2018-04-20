@@ -6,6 +6,13 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+
+#include "Globals.h"
+#include "Drawing.h"
 #include "DoublyLinkedList.h"
 
 typedef struct Snake {
@@ -16,25 +23,23 @@ typedef struct Snake {
 	int headx;
 	int heady;
 	int direction; 
-	int prevDirection;
+	int nextDirection;
 } Snake;
 
 Snake snake;
 
 void initSnake(Snake* snake);
+void wipeSnake(Snake* snake);
+void drawSnake(Snake* snake);
 void placeSnake(Snake* snake);
-void moveSnake(Snake* snake);
-void moveSnakeTail(Snake* snake);
-void incrementScore(Snake* snake);
-void moveSnakeHead(Snake* snake, int direction);
+int moveSnake(Snake* snake);
+void killSnake(Snake* snake);
 
 char* getScore(Snake* snake);
+void incrementScore(Snake* snake);
+
 int inBounds(Snake* snake, int direction);
 int coordInBounds(int x, int y);
 
-void wipeSnake(Snake* snake);
-void drawSnake(Snake* snake);
-
 void getRandomAdjacent(int* x, int* y);
-
 #endif

@@ -27,9 +27,11 @@ downButton_ActionPerformed( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo
 	
 	if (!RUNNING)
 		return 0;
-		
-	wipeSnake(&snake);
 	
+	snake.nextDirection = DOWN;
+	
+	wipeSnake(&snake);
+	/*
 	if(inBounds(&snake, DOWN) == 1) {
 		moveSnakeHead(&snake, DOWN);
 		if(isScore(&snake, &snakeFood)) {
@@ -41,6 +43,7 @@ downButton_ActionPerformed( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo
 			initSnakeFood(&snakeFood);
 		} //end if
 	} // end if
+	*/
 	
 	drawSnake(&snake);
 	return( Pt_CONTINUE );

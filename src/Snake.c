@@ -1,13 +1,10 @@
 #include "Snake.h"
-#include "Globals.h"
-#include "Snake.h"
-#include "Drawing.h"
-#include "DoublyLinkedList.h"
 
 void initSnake(Snake* snake) {
 	snake->score = 0;
 	snake->size = 1;
 	snake->direction = RIGHT;
+	snake->nextDirection = RIGHT;
 	snake->tailx = -1;
 	snake->taily = -1;
 	snake->headx = -1;
@@ -37,70 +34,34 @@ void initSnake(Snake* snake) {
 	
 } // end initSnake()
 
-void placeSnake(Snake* snake) {
-
-} // end placeSnake()
-
-void moveSnake(Snake* snake) {
-	//while(1){
-		//sleep(1 second)
-		//find head
-		//find front facing by looking for adjacent red tile, and finding the opposite tile
-			//if tile is not outofbounds
-				//moveSnakeHead(opposite direction of red tile)
-			//else 
-				//do
-					//pick random direction
-				//while (random direction is not out of bounds or red tile)
-				//moveSnakehead(random)
-	//}//end while
-} // end moveSnake()
-
-void moveSnakeTail(Snake* snake) {
-
-} // end moveSnakeTail()
-
-void moveSnakeHead(Snake* snake, int direction) {
-	snake->direction = direction;
+int moveSnake(Snake* snake) {
+	//snake->direction = snake->nextDirection;
 	snake->tailx = list.TAIL->x;
 	snake->taily = list.TAIL->y;
+	
+	// If the next direction is the opposite current direction, move is invalid
+	if (snake->direction == -(snake->nextDirection))
+		return 0;
+	
+	snake->direction = snake->nextDirection;
 	switch(snake->direction) {
 		case RIGHT:
-			if(snake->direction == LEFT) {
-				snake->headx--;
-				break;
-			} else {
-				snake->headx++;
-				break;
-			} // end if-else
+			snake->headx++;
+			break;
 		case LEFT:
-			if(snake->direction == RIGHT) {
-				snake->headx++;
-				break;
-			} else {
-				snake->headx--;
-				break;
-			} // end if-else
+ 			snake->headx--;
+			break;
 		case UP:
-			if(snake->direction == DOWN) {
-				snake->heady++;
-				break;
-			} else {
-				snake->heady--;
-				break;
-			} // end if-else
+			snake->heady--;
+			break;
 		case DOWN:
-			if(snake->direction == UP) {
-				snake->heady--;
-				break;
-			} else {
-				snake->heady++;
-				break;
-			} // end if-else
+			snake->heady++;
+			break;
 		default:
 			break;
 	} 
 	moveHead(snake->headx, snake->heady);
+	return 1;
 } // end moveSnakeHead()
 
 int coordInBounds(int x, int y) {
@@ -189,13 +150,12 @@ void getRandomAdjacent(int* x, int* y) {
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
+void killSnake(Snake* snake) 
+{
+	freeList();
+	ClearSquare(STX, STY, WIDTH+STX, LENGTH+STY);
+	snake->headx = 0;
+	snake->heady = 0;
+	snake->tailx = 0;
+	snake->taily = 0;
+}

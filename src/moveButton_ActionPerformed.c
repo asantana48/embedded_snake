@@ -17,22 +17,21 @@
 #include "Drawing.h"
 #include "SnakeFood.h"
 
-int
-upButton_ActionPerformed( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo_t *cbinfo )
-
-	{
-
-	/* eliminate 'unreferenced' warnings */
-	widget = widget, apinfo = apinfo, cbinfo = cbinfo;
-	if (!RUNNING)
-		return 0;
-	
-	wipeSnake(&snake);
-	//snake->nextDirection = UP;
-	
-	
-	drawSnake(&snake);
-	return( Pt_CONTINUE );
-
-	}
-
+void
+directionButton_actionPerformed()
+{
+/*	if(inBounds(&snake), snake.nextDirection ) {
+		moveSnake(&snake);
+		if(isScore(&snake, &snakeFood)) {
+			incrementScore(&snake);
+			char* scr = getScore(&snake);
+			PtSetResource(ABW_scoreTextField, Pt_ARG_TEXT_STRING, scr, 0);
+		
+			insertAtTail(snake.tailx, snake.taily);
+			initSnakeFood(&snakeFood);
+		} //end if
+	} // end if
+	else {
+		killSnake(&snake);
+	}*/
+}
