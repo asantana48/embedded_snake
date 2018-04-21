@@ -16,6 +16,7 @@
 #include "Globals.h"
 #include "Drawing.h"
 #include "SnakeFood.h"
+#include "Movement.h"
 
 int
 upButton_ActionPerformed( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo_t *cbinfo )
@@ -24,14 +25,12 @@ upButton_ActionPerformed( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo_t
 
 	/* eliminate 'unreferenced' warnings */
 	widget = widget, apinfo = apinfo, cbinfo = cbinfo;
+	
 	if (!RUNNING)
-		return 0;
+		return 0;	
+	snake.newDirection = UP;
+	move();
 	
-	wipeSnake(&snake);
-	//snake->nextDirection = UP;
-	
-	
-	drawSnake(&snake);
 	return( Pt_CONTINUE );
 
 	}

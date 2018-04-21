@@ -16,33 +16,20 @@
 #include "Globals.h"
 #include "Drawing.h"
 #include "SnakeFood.h"
+#include "Movement.h"
 
 int
 rightButton_ActionPerformed( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo_t *cbinfo )
 {
 
 	widget = widget, apinfo = apinfo, cbinfo = cbinfo;
+	
 	if (!RUNNING)
 		return 0;
-		
-	wipeSnake(&snake);
 	
-	/*
+	snake.newDirection = RIGHT;
+	move();
 	
-	if(inBounds(&snake, RIGHT) == 1) {
-		moveSnakeHead(&snake, RIGHT);
-		if(isScore(&snake, &snakeFood)) {
-			incrementScore(&snake);
-			char* scr = getScore(&snake);
-			PtSetResource(ABW_scoreTextField, Pt_ARG_TEXT_STRING, scr, 0);
-			
-			insertAtTail(snake.tailx, snake.taily);
-			initSnakeFood(&snakeFood);
-		} // end if
-			
-	} // end if*/
-	
-	drawSnake(&snake);
 	return( Pt_CONTINUE );
 
 }

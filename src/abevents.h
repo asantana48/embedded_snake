@@ -11,6 +11,7 @@ static const ApEventLink_t AbLinks_frame[] = {
 	{ 8, 0, 0L, 0L, 0L, NULL, NULL, "upButton", 2009, upButton_ActionPerformed, 0, 0, 0, 0, },
 	{ 8, 0, 0L, 0L, 0L, NULL, NULL, "rightButton", 2009, rightButton_ActionPerformed, 0, 0, 0, 0, },
 	{ 8, 0, 0L, 0L, 0L, NULL, NULL, "downButton", 2009, downButton_ActionPerformed, 0, 0, 0, 0, },
+	{ 4, 0, 0L, 0L, 0L, &GameOver, NULL, "pauseButton", 2009, NULL, 0, 11, 50, 50, },
 	{ 0 }
 	};
 

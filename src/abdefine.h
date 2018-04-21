@@ -22,6 +22,10 @@ extern const int ABN_downButton;
 extern const int ABN_pauseButton;
 #define ABW_pauseButton                      AbGetABW( ABN_pauseButton )
 
+/* 'GameOver' Dialog link */
+extern const int ABN_GameOver;
+#define ABW_GameOver                         AbGetABW( ABN_GameOver )
+
 #define AbGetABW( n ) ( AbWidgets[ n ].wgt )
 
 #define AB_OPTIONS "s:x:y:h:w:S:"

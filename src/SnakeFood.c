@@ -4,7 +4,6 @@
 #include "SnakeFood.h"
 
 void initSnakeFood(SnakeFood* snakeFood) {
-	time_t t;
 	// Make sure we are not placing snake food on top of a snake square
 	do  {
 		snakeFood->x = (rand() % (HORIZONTAL - 5) +1);

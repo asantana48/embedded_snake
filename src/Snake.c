@@ -3,8 +3,7 @@
 void initSnake(Snake* snake) {
 	snake->score = 0;
 	snake->size = 1;
-	snake->direction = RIGHT;
-	snake->nextDirection = RIGHT;
+	snake->direction = NULL;
 	snake->tailx = -1;
 	snake->taily = -1;
 	snake->headx = -1;
@@ -20,7 +19,7 @@ void initSnake(Snake* snake) {
 	int i = 0;
 	for(i = 0; i < 2; ++i){
 		// Place snake tail in valid random adjacent positions
-		while(inList(tempx, tempy) || !coordInBounds(tempx, tempy)) {
+		while(inList(tempx, tempy) || !coordinateInBounds(tempx, tempy)) {
 			tempx = list.TAIL->x;
 			tempy = list.TAIL->y;
 			getRandomAdjacent(&tempx, &tempy);
@@ -29,21 +28,33 @@ void initSnake(Snake* snake) {
 	}
 	drawSnake(snake);
 	
+	// Find next direction
+	
+	
 	//start moving snake automatically
 	//make a thread of this function: moveSnake()?
 	
 } // end initSnake()
 
+int coordinateInBounds(int x, int y) {
+	//Horizontal checks
+	if (x*HORIZONTAL < 0 || x * HORIZONTAL >=WIDTH)
+		return 0;
+	// Vertical checks
+	else if (y*VERTICAL < 0 || y * VERTICAL >= LENGTH)
+		return 0;
+	else
+		return 1;
+}
+
 int moveSnake(Snake* snake) {
-	//snake->direction = snake->nextDirection;
 	snake->tailx = list.TAIL->x;
 	snake->taily = list.TAIL->y;
 	
-	// If the next direction is the opposite current direction, move is invalid
-	if (snake->direction == -(snake->nextDirection))
+	if (snake->direction == -snake->newDirection)
 		return 0;
 	
-	snake->direction = snake->nextDirection;
+	snake->direction = snake->newDirection;	
 	switch(snake->direction) {
 		case RIGHT:
 			snake->headx++;
@@ -60,37 +71,19 @@ int moveSnake(Snake* snake) {
 		default:
 			break;
 	} 
+		
+	if (inList(snake->headx, snake->heady) &&
+		snake->headx != snake->tailx && 
+		snake->heady != snake->taily)
+		return 0;
+		
 	moveHead(snake->headx, snake->heady);
+	
+	if (!coordinateInBounds(snake->headx, snake->heady))
+		return 0;
+		
 	return 1;
 } // end moveSnakeHead()
-
-int coordInBounds(int x, int y) {
-
-	if((x*HORIZONTAL) < 0 || (x*HORIZONTAL) >= WIDTH) {
-		return 0;
-	} else if((y*VERTICAL) < 0 && (y*HORIZONTAL) >=LENGTH) {
-		return 0;
-	} else {
-		return 1;
-	} // end if-else
-
-} // end inBounds()
-
-int inBounds(Snake* snake, int direction) {
-
-	if(((snake->headx-1)*HORIZONTAL) < 0 && direction == LEFT) {
-		return 0;
-	} else if(((snake->headx+1)*HORIZONTAL) >= WIDTH && direction == RIGHT) {
-		return 0;
-	} else if(((snake->heady-1)*VERTICAL) < 0 && direction == UP) {
-		return 0;
-	} else if(((snake->heady+1)*VERTICAL) >= LENGTH && direction == DOWN) {
-		return 0;
-	} else {
-		return 1;
-	} // end if-else
-
-} // end inBounds()
 
 void incrementScore(Snake* snake) {
 
@@ -150,7 +143,7 @@ void getRandomAdjacent(int* x, int* y) {
 	}
 }
 
-void killSnake(Snake* snake) 
+void slaySnake(Snake* snake) 
 {
 	freeList();
 	ClearSquare(STX, STY, WIDTH+STX, LENGTH+STY);

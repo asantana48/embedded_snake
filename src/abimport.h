@@ -3,7 +3,8 @@
 #include "abdefine.h"
 
 extern ApWindowLink_t frame;
-extern ApWidget_t AbWidgets[ 10 ];
+extern ApDialogLink_t GameOver;
+extern ApWidget_t AbWidgets[ 11 ];
 
 
 #ifdef __cplusplus

@@ -12,3 +12,6 @@ const int ABN_rightButton = 7;
 const int ABN_downButton = 8;
 const int ABN_pauseButton = 9;
 
+/* 'GameOver' Dialog link */
+const int ABN_GameOver = 10;
+

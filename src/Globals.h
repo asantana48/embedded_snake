@@ -2,11 +2,10 @@
 #define _GLOBALS_H
 
 // DIrection constants
-#define UP 1
-#define DOWN -1
-#define LEFT 2
-#define RIGHT -2
-
+#define LEFT 1
+#define RIGHT -1
+#define UP 2
+#define DOWN -2
 // Drawing constants
 #define VERTICAL 20
 #define HORIZONTAL 20 

@@ -12,25 +12,17 @@
 #include "ablibs.h"
 #include "abimport.h"
 #include "proto.h"
-#include "Snake.h"
-#include "Globals.h"
-#include "Drawing.h"
-#include "SnakeFood.h"
-#include "Movement.h"
+
 
 int
-downButton_ActionPerformed( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo_t *cbinfo )
+dialog( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo_t *cbinfo )
 
 	{
 
 	/* eliminate 'unreferenced' warnings */
 	widget = widget, apinfo = apinfo, cbinfo = cbinfo;
-	
-	if (!RUNNING)
-		return 0;	
-		
-	snake.newDirection = DOWN;
-	move();
-	
+
 	return( Pt_CONTINUE );
-}
+
+	}
+

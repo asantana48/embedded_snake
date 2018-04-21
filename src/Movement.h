@@ -2,6 +2,8 @@
 /*                            AppBuilder Photon Code Lib */
 /*                                         Version 2.03  */
 
+#ifndef MOVEMENT_H
+#define MOVEMENT_H
 /* Standard headers */
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,21 +19,5 @@
 #include "Drawing.h"
 #include "SnakeFood.h"
 
-void
-directionButton_actionPerformed()
-{
-/*	if(inBounds(&snake), snake.nextDirection ) {
-		moveSnake(&snake);
-		if(isScore(&snake, &snakeFood)) {
-			incrementScore(&snake);
-			char* scr = getScore(&snake);
-			PtSetResource(ABW_scoreTextField, Pt_ARG_TEXT_STRING, scr, 0);
-		
-			insertAtTail(snake.tailx, snake.taily);
-			initSnakeFood(&snakeFood);
-		} //end if
-	} // end if
-	else {
-		killSnake(&snake);
-	}*/
-}
+extern void move();
+#endif

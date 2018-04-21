@@ -32,7 +32,7 @@ int newGameButton_ActionPerformed( PtWidget_t *widget, ApInfo_t *apinfo, PtCallb
 		
 	PtSetResource(ABW_scoreTextField, Pt_ARG_TEXT_STRING, "0", 0);
 	
-	killSnake(&snake);
+	slaySnake(&snake);
 	ClearSquare(STX, STY, WIDTH+STX, LENGTH+STY);
 	
 	RUNNING = 1;

@@ -23,7 +23,7 @@ typedef struct Snake {
 	int headx;
 	int heady;
 	int direction; 
-	int nextDirection;
+	int newDirection;
 } Snake;
 
 Snake snake;
@@ -33,13 +33,12 @@ void wipeSnake(Snake* snake);
 void drawSnake(Snake* snake);
 void placeSnake(Snake* snake);
 int moveSnake(Snake* snake);
-void killSnake(Snake* snake);
+void slaySnake(Snake* snake);
 
 char* getScore(Snake* snake);
 void incrementScore(Snake* snake);
 
-int inBounds(Snake* snake, int direction);
-int coordInBounds(int x, int y);
+int coordinateInBounds(int x, int y);
 
 void getRandomAdjacent(int* x, int* y);
 #endif
