@@ -1,0 +1,20 @@
+PhAB203.01
+PtWindow
+1
+GameOver
+1005
+dim
+300,250
+2002
+crgb
+14277081
+18013
+flag
+95152,96182
+18015
+string
+You died!
+1004
+data
+0
+0
