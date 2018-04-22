@@ -1,20 +1,29 @@
 #ifndef _SNAKE_H
 #define _SNAKE_H
 
-#include <stdlib.h>
+// *****************
+// Standard Headers
+// *****************
 #include <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 #include <stddef.h>
 #include <stdbool.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
+// *****************
+// Local Headers
+// *****************
+#include "globals.h"
+#include "drawing.h"
+#include "wavfactory.h"
+#include "doublylinkedlist.h"
 
-#include "Globals.h"
-#include "Drawing.h"
-#include "DoublyLinkedList.h"
-
+// ***************
+// Snake Structure
+// ***************
 typedef struct Snake {
 	int size;
 	int tailx;
@@ -26,19 +35,23 @@ typedef struct Snake {
 	int newDirection;
 } Snake;
 
+// *********************
+// Global Snake Structure
+// *********************
 Snake snake;
 
+// *******************
+// Function Prototypes
+// *******************
 void initSnake(Snake* snake);
+int moveSnake(Snake* snake);
+void slaySnake(Snake* snake);
 void wipeSnake(Snake* snake);
 void drawSnake(Snake* snake);
 void placeSnake(Snake* snake);
-int moveSnake(Snake* snake);
-void slaySnake(Snake* snake);
-
-char* getScore(Snake* snake);
-void incrementScore(Snake* snake);
-
 int coordinateInBounds(int x, int y);
+void incrementScore(Snake* snake);
+void moveValidRandom(Snake* snake);
+void getScore(Snake* snake, char* score);
 
-void getRandomAdjacent(int* x, int* y);
 #endif

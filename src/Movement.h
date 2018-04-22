@@ -1,23 +1,28 @@
-/* Y o u r   D e s c r i p t i o n                       */
-/*                            AppBuilder Photon Code Lib */
-/*                                         Version 2.03  */
+#ifndef _MOVEMENT_H
+#define _MOVEMENT_H
 
-#ifndef MOVEMENT_H
-#define MOVEMENT_H
-/* Standard headers */
+// *****************
+// Standard Headers
+// *****************
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
+#include <unistd.h>
 
-/* Local headers */
-#include "ablibs.h"
-#include "abimport.h"
+// *****************
+// Local Headers
+// *****************
 #include "proto.h"
-#include "Snake.h"
-#include "Globals.h"
-#include "Drawing.h"
-#include "SnakeFood.h"
+#include "ablibs.h"
+#include "snake.h"
+#include "globals.h"
+#include "drawing.h"
+#include "abimport.h"
+#include "snakefood.h"
 
+// *******************
+// Function Prototypes
+// *******************
 extern void move();
+
 #endif

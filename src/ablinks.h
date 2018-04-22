@@ -2,15 +2,9 @@
 
 extern ApContext_t AbContext;
 
-ApWindowLink_t frame = {
-	"frame.wgtw",
+ApWindowLink_t base = {
+	"base.wgtw",
 	&AbContext,
-	AbLinks_frame, 0, 6
-	};
-
-ApDialogLink_t GameOver = {
-	"GameOver.wgtd",
-	&AbContext,
-	NULL, 10, 0
+	AbLinks_base, 0, 8
 	};
 

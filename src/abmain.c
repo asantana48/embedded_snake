@@ -63,10 +63,12 @@ main ( int argc, char *argv[] )
 
 static const ApClassTab_t ClassTable[] = {
 	{ "PtWindow", &PtWindow },
+	{ "PtPane", &PtPane },
 	{ "PtContainer", &PtContainer },
-	{ "PtButton", &PtButton },
 	{ "PtLabel", &PtLabel },
 	{ "PtText", &PtText },
+	{ "PtButton", &PtButton },
+	{ "PtTimer", &PtTimer },
 	{ NULL, NULL }
 	};
 
