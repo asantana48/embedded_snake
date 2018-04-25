@@ -12,7 +12,7 @@
 #include "ablibs.h"
 #include "abimport.h"
 #include "proto.h"
-#include "snakefood.h"
+#include "SnakeFood.h"
 
 int
 foodtimeractivate( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo_t *cbinfo )
@@ -24,8 +24,12 @@ foodtimeractivate( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo_t *cbinf
 	
 	if (RUNNING == 1)
 	{
+		FOODGEN -= 500;	
+	}
+	if (FOODGEN == 0) {
 		removeSnakeFood(&snakeFood);
 		initSnakeFood(&snakeFood);
+		FOODGEN = 10000;
 	}
 	return( Pt_CONTINUE );
 

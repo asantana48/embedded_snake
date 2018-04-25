@@ -19,10 +19,6 @@
 #define LENGTH 240
 #define HORIZONTAL 17
 
-// For the snake and food
-#define MAX_H 20
-#define MAX_V 20
-
 // ***************
 // Game Constants
 // ***************
@@ -38,5 +34,5 @@ extern int SEEDED;
 // ***************
 extern int FED;
 extern int RUNNING;
-extern int FOODGEN;
+
 #endif

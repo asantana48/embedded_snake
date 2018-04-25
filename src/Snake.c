@@ -1,4 +1,4 @@
-#include "snake.h"
+#include "Snake.h"
 
 // Function : initSnake()
 // Purpose : Initialize snake structure and display in random position in game environment.
@@ -12,8 +12,8 @@ void initSnake(Snake* snake) {
 	snake->headx = -1;
 	snake->heady = -1;
 	
-	snake->headx = (rand() % (HORIZONTAL - 10) +5);
-	snake->heady = (rand() % (VERTICAL - 10) + 5);
+	snake->headx = (rand() % (MAX_H - 6) + 3);
+	snake->heady = (rand() % (MAX_V - 6) + 3);
 	
 	insertAtHead(snake->headx , 	snake->heady);
 	snake->tailx = snake->headx ;
@@ -28,6 +28,7 @@ void initSnake(Snake* snake) {
 		snake->taily = list.TAIL->y;
 	} // end for
 	
+	fprintf(stdout, "Final pos: (%d, %d)\n", snake->headx, snake->heady);
 	drawSnake(snake);
 	
 	media_index = 2;
@@ -54,10 +55,9 @@ int coordinateInBounds(int x, int y) {
 // Purpose : Move the current snake structure through doubly linked list.
 int moveSnake(Snake* snake) {
 	int eatingSelf = 0;
-	if (snake->direction == -snake->newDirection)
-		return 0;
-	
-	snake->direction = snake->newDirection;	
+	if (snake->direction != -snake->newDirection)
+		snake->direction = snake->newDirection;	
+		
 	switch(snake->direction) {
 		case RIGHT: 	snake->headx++; break;
 		case LEFT: snake->headx--; break;
@@ -73,12 +73,12 @@ int moveSnake(Snake* snake) {
 			
 	moveHead(snake->headx, snake->heady);
 	
-	fprintf(stderr, "SnakeHead:(%d,%d) | SnakeTail:(%d, %d)\n", snake->headx, snake->heady, snake->tailx, snake->taily);
 	if (eatingSelf && !( snake->headx == snake->tailx && snake->heady == snake->taily))
-			return 0;	
+		return 0;	
 	if (!coordinateInBounds(snake->headx, snake->heady))
 		return 0;
-		
+	
+	fprintf(stdout, "(%d, %d)\n", snake->headx, snake->heady);
 	return 1;
 } // end moveSnake()
 

@@ -11,9 +11,9 @@
 // *****************
 // Local Headers
 // *****************
-#include "snake.h"
-#include "globals.h"
-#include "drawing.h"
+#include "Snake.h"
+#include "Globals.h"
+#include "Drawing.h"
 #include "wavfactory.h"
 
 // ********************

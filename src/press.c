@@ -11,12 +11,13 @@
 // *****************
 #include "proto.h"
 #include "ablibs.h"
-#include "snake.h"
-#include "globals.h"
-#include "drawing.h"
 #include "abimport.h"
-#include "snakefood.h"
-#include "doublylinkedlist.h"
+
+#include "Snake.h"
+#include "Globals.h"
+#include "Drawing.h"
+#include "SnakeFood.h"
+#include "DoublyLinkedList.h"
 
 // Function : press()
 // Purpose : Action handler for button press events.
@@ -26,22 +27,22 @@ int press( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo_t *cbinfo ) {
 	int id = ApName(widget);
 	
 	if(id == ABN_upButton) {
-		if(!RUNNING) {
+		if(RUNNING != 1) {
 			return 0;
 		} // end if
 		snake.newDirection = UP;
 	} else if(id == ABN_leftButton) {
-		if(!RUNNING) {
+		if(RUNNING != 1) {
 			return 0;
 		} // end if
 		snake.newDirection = LEFT;
 	} else if(id == ABN_rightButton) {
-		if(!RUNNING) {
+		if(RUNNING != 1) {
 			return 0;
 		} // end if
 		snake.newDirection = RIGHT;
 	} else if(id == ABN_downButton) {
-		if(!RUNNING) {
+		if(RUNNING != 1) {
 			return 0;
 		} // end if
 		snake.newDirection = DOWN;
@@ -62,13 +63,13 @@ int press( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo_t *cbinfo ) {
 		slaySnake(&snake);
 		ClearSquare(STX, STY, WIDTH+STX, LENGTH+STY);
 		RUNNING = 1;
-		FED = 1;
 		
 		initSnake(&snake);
 		initSnakeFood(&snakeFood);
 
 		PtSetResource(ABW_SnakeTimer, Pt_ARG_TIMER_INITIAL, 1000, 0);
-		PtSetResource(ABW_FoodTimer, Pt_ARG_TIMER_INITIAL, 10000, 0);
+		PtSetResource(ABW_FoodTimer, Pt_ARG_TIMER_INITIAL, 500, 0);
+		FOODGEN = 10000;
 	} else {
 		return 0;
 	} // end if-else

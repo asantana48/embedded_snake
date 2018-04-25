@@ -1,11 +1,11 @@
-#include "snakefood.h"
+#include "SnakeFood.h"
 
 // Function : initSnakeFood()
 // Purpose : Initialize snake food structure to random location within game environment.
 void initSnakeFood(SnakeFood* snakeFood) {
 	do  {
-		snakeFood->x = (rand() % (HORIZONTAL - 5) +1);
-		snakeFood->y = (rand() % (VERTICAL - 5) + 1);
+		snakeFood->x = rand() % MAX_H;
+		snakeFood->y =  rand() % MAX_V;
 	} while (inList(snakeFood->x, snakeFood->y));
 	DrawFoodSquare((snakeFood->x*HORIZONTAL)+STX, (snakeFood->y*VERTICAL)+STY,
 							((snakeFood->x + 1)*HORIZONTAL)+STX, ((snakeFood->y + 1)*VERTICAL)+STY);

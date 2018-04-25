@@ -1,4 +1,4 @@
-#include "doublylinkedlist.h"
+#include "DoublyLinkedList.h"
 
 // Function : createNode()
 // Purpose : Create new node structure instance.

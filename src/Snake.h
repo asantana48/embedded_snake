@@ -16,10 +16,10 @@
 // *****************
 // Local Headers
 // *****************
-#include "globals.h"
-#include "drawing.h"
+#include "Globals.h"
+#include "Drawing.h"
 #include "wavfactory.h"
-#include "doublylinkedlist.h"
+#include "DoublyLinkedList.h"
 
 // ***************
 // Snake Structure

@@ -12,7 +12,7 @@
 #include "proto.h"
 #include "ablibs.h"
 #include "abimport.h"
-#include "movement.h"
+#include "Movement.h"
 
 // Function : snaketimeractivate()
 // Purpose : If the snake is running then move the snake every timer activation period.

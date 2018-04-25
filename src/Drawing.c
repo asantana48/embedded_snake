@@ -1,4 +1,4 @@
-#include "drawing.h"
+#include "Drawing.h"
 
 // Function : ClearSquare()
 // Purpose : Clear given square dimension within game environment.
